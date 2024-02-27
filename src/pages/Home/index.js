@@ -5,48 +5,81 @@ import {
   ScrollView,
   SafeAreaView,
   Pressable,
+  Modal
 } from "react-native";
 import styles from './style';
 
-import{useState} from 'react';
+import{useState, useEffect} from 'react';
 export default function Home() {
 
     const [jogador, setJogador] = useState(0)
     const [computador, setComputador] = useState(0)
     const [placarjogador, setPlacarJogador] = useState(0)
     const [placarComputador, setPlacarComputador] = useState(computador)
+    const [modalVisible, setModalVisible] = useState(false)
+    
+    useEffect(() => {
+      if (placarjogador === 3 || placarComputador === 3) {
+        setModalVisible(true);
+      }
+    }, [placarjogador, placarComputador])
+
+    function jogar(valor) {
+
+      let maquina;
+
+      
+         maquina = Math.floor(Math.random() * 3) + 1;
+        setJogador(valor);
+        setComputador(maquina);
+      
     
     
-    function jogar (valor) {
-        setJogador(valor)
-        let maquina = Math.floor (Math.random()*3)+1
-    setComputador(maquina)
 
 
-    if(valor ==1 && maquina ==2){
+
+  if(valor ==1 && maquina ==2){
     
-        setPlacarComputador(placarComputador +1)
-    } else if (valor == 2 && maquina == 1) {
-        setPlacarJogador(placarjogador +1)
-    } else if (valor == 1 && maquina == 3) {
-        setPlacarJogador(placarjogador +1)
-        
+    setPlacarComputador(placarComputador +1)
+  } else if (valor == 2 && maquina == 1) {
+    setPlacarJogador(placarjogador +1)
+  } else if (valor == 1 && maquina == 3) {
+    setPlacarJogador(placarjogador +1)
+    
+  }
+  else if (valor == 3 && maquina == 1) {
+    setPlacarComputador(placarComputador +1)
+    
+  }
+  else if (valor ==2 && maquina ==3){
+    setPlacarComputador(placarComputador +1)
+    
+  } 
+  else if (valor ==3 && maquina ==2){
+    setPlacarJogador(placarjogador +1)
+    
+  } 
+
     }
-     else if (valor == 3 && maquina == 1) {
-        setPlacarComputador(placarComputador +1)
-        
-    }
-    else if (valor ==2 && maquina ==3){
-        setPlacarComputador(placarComputador +1)
 
-    } 
-    else if (valor ==3 && maquina ==2){
-        setPlacarJogador(placarjogador +1)
 
-    } 
+
+    function vencedor() {
+
+      if (placarComputador === 3){
+        return <Text style={styles.textbutton}>Voce perdeu...</Text>
+      } else {
+        return <Text style={styles.textbutton}>Parabens! você venceu</Text>
+      }
     }
 
-    
+    function resetarJogo() {
+      setJogador(0);
+      setComputador(0);
+      setPlacarJogador(0);
+      setPlacarComputador(0);
+      setModalVisible(false);
+    }
     
     function exibirImagem (valor){
     if(valor==1){
@@ -75,8 +108,8 @@ export default function Home() {
           
           <Text style={styles.txtPlacar}>placar</Text>
           <View style={styles.boxPlacar}>
-          <Text style={styles.txtPlacar}>{placarjogador}</Text>
-          <Text style={styles.txtPlacar}>{placarComputador}</Text>
+          <Text style={styles.txtPlacar}>{placarjogador >3? setModalVisible(true) : placarjogador }</Text>
+          <Text style={styles.txtPlacar}>{placarComputador >3? setModalVisible(true) : placarComputador}</Text>
           </View>
         </View>
         <View style={styles.sinais}>
@@ -91,7 +124,7 @@ export default function Home() {
         <View style={styles.novaPartida}>
           <Pressable style={styles.botaoPartida}>
             
-          <Text style={styles.textbutton}>Nova Partida</Text>
+          <Text style={styles.textbutton} >Nova Partida</Text>
           </Pressable>
         </View>
 
@@ -109,7 +142,17 @@ export default function Home() {
         </View>
         
         </View>
-      
+      <Modal transparent visible={modalVisible} >
+        <View style={styles.ModalFimJogo}>
+        <Text>{vencedor()}</Text>
+          <Pressable style={styles.buttonReload} onPress={() =>{setModalVisible(false), resetarJogo()}}>
+            
+          <Text style={styles.textbutton} >Reiniciar Partida</Text>
+          </Pressable>
+
+
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }

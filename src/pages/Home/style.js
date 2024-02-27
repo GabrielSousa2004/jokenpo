@@ -107,4 +107,27 @@ export default StyleSheet.create({
         margin: 5, 
     },
 
+    ModalFimJogo:{
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    textModal:{
+        fontSize: 25,
+        color: 'white'
+    },
+
+    buttonReload:{
+        justifyContent:'center',
+        borderColor:'gray',
+        backgroundColor: '#f3aa47',
+        width: '70%',
+        Height: '70%',
+        padding: 10,
+        alignSelf: 'center',
+        borderRadius: 20
+    }
+
 })
