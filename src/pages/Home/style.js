@@ -132,7 +132,7 @@ export default StyleSheet.create({
 
     ModalFimJogo:{
         flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        backgroundColor: 'rgba(0, 0, 0, 1.0)',
         
         justifyContent: 'center',
         alignItems: 'center'
