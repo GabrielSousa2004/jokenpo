@@ -23,6 +23,13 @@ export default StyleSheet.create({
         width: '100%',
         
     },
+    imgPlacar:{
+        width: '50%',
+        resizeMode: 'contain',
+        alignSelf: 'center'
+        
+        
+    },
     
     placar:{
         
@@ -31,10 +38,20 @@ export default StyleSheet.create({
     txtPlacar:{
         width: '100%',
         textAlign: 'center',
-        fontFamily:'Bold',
-        fontSize:30,
+        fontWeight: 'bold',
+        fontSize:50,
        
-    },boxPlacar:{
+    },
+
+    txtJogadores:{
+        width: '100%',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize:15,
+       
+    },
+    
+    boxPlacar:{
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -58,6 +75,12 @@ export default StyleSheet.create({
         resizeMode: 'contain'
 
 
+    },
+
+    imgResultado:{
+        width: 300,
+        height: 100,
+        resizeMode: 'contain'
     },
     
     novaPartida:{
@@ -109,7 +132,8 @@ export default StyleSheet.create({
 
     ModalFimJogo:{
         flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -123,11 +147,14 @@ export default StyleSheet.create({
         justifyContent:'center',
         borderColor:'gray',
         backgroundColor: '#f3aa47',
-        width: '70%',
-        Height: '70%',
+        
+        
         padding: 10,
         alignSelf: 'center',
         borderRadius: 20
-    }
+    },
+    reiniciarPartida: {
+    borderRadius: '50%',
 
+}
 })

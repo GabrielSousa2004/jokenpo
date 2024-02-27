@@ -2,12 +2,14 @@ import {
   Text,
   View,
   Image,
-  ScrollView,
   SafeAreaView,
   Pressable,
   Modal
 } from "react-native";
+
+
 import styles from './style';
+import { Ionicons } from '@expo/vector-icons';
 
 import{useState, useEffect} from 'react';
 export default function Home() {
@@ -67,9 +69,9 @@ export default function Home() {
     function vencedor() {
 
       if (placarComputador === 3){
-        return <Text style={styles.textbutton}>Voce perdeu...</Text>
+        return <Image source={require("../../../assets/Img/perdeu.png")} style={styles.imgResultado}/>
       } else {
-        return <Text style={styles.textbutton}>Parabens! você venceu</Text>
+        return <Image source={require("../../../assets/Img/venceu.png")} style={styles.imgResultado}/>
       }
     }
 
@@ -106,7 +108,15 @@ export default function Home() {
         </View>
         <View style={styles.placar}>
           
-          <Text style={styles.txtPlacar}>placar</Text>
+        <Image
+             source={require('../../../assets/Img/placar.png')}
+             style={styles.imgPlacar}
+          />
+          
+          <View style={styles.boxPlacar}>
+          <Text style={styles.txtJogadores}>Você</Text>
+          <Text style={styles.txtJogadores}>Computador</Text>
+          </View>
           <View style={styles.boxPlacar}>
           <Text style={styles.txtPlacar}>{placarjogador >3? setModalVisible(true) : placarjogador }</Text>
           <Text style={styles.txtPlacar}>{placarComputador >3? setModalVisible(true) : placarComputador}</Text>
@@ -122,9 +132,9 @@ export default function Home() {
           
         </View>
         <View style={styles.novaPartida}>
-          <Pressable style={styles.botaoPartida}>
+          <Pressable style={styles.reiniciarPartida} onPress={() => {resetarJogo()}}>
             
-          <Text style={styles.textbutton} >Nova Partida</Text>
+          <Text style={styles.buttonReload} ><Ionicons name="refresh-outline" size={30} color={'white'}></Ionicons></Text>
           </Pressable>
         </View>
 
@@ -142,12 +152,13 @@ export default function Home() {
         </View>
         
         </View>
-      <Modal transparent visible={modalVisible} >
-        <View style={styles.ModalFimJogo}>
+      <Modal transparent visible={modalVisible}  >
+
+        <View style={styles.ModalFimJogo} blurRadius ={10}>
         <Text>{vencedor()}</Text>
           <Pressable style={styles.buttonReload} onPress={() =>{setModalVisible(false), resetarJogo()}}>
             
-          <Text style={styles.textbutton} >Reiniciar Partida</Text>
+          <Text style={styles.textbutton} >Nova Partida</Text>
           </Pressable>
 
 
