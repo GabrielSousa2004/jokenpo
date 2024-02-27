@@ -90,9 +90,7 @@ export default function Home() {
     return (<Image source={require("../../../assets/Img/papel.png")} style={styles.imgSinais}/>)
     } else if(valor==3){
     return (<Image source={require("../../../assets/Img/tesoura.png")} style={styles.imgSinais}/>)
-    } else {
-    return (<Image source={require("../../../assets/Img/caixa.png")} style={styles.imgSinais}/>)
-    }
+    } 
     }
 
   return (
