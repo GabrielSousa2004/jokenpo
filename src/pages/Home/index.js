@@ -19,6 +19,7 @@ export default function Home() {
     const [placarjogador, setPlacarJogador] = useState(0)
     const [placarComputador, setPlacarComputador] = useState(computador)
     const [modalVisible, setModalVisible] = useState(false)
+    const [modalReiniciarVisible, setModalReiniciarVisible] = useState(false)
     
     useEffect(() => {
       if (placarjogador === 3 || placarComputador === 3) {
@@ -81,6 +82,7 @@ export default function Home() {
       setPlacarJogador(0);
       setPlacarComputador(0);
       setModalVisible(false);
+      setModalReiniciarVisible(false);
     }
     
     function exibirImagem (valor){
@@ -130,9 +132,9 @@ export default function Home() {
           
         </View>
         <View style={styles.novaPartida}>
-          <Pressable style={styles.reiniciarPartida} onPress={() => {resetarJogo()}}>
+          <Pressable style={styles.reiniciarPartida} onPress={() => {setModalReiniciarVisible(true)}}>
             
-          <Text style={styles.buttonReload} ><Ionicons name="refresh-outline" size={30} color={'white'}></Ionicons></Text>
+          <Text style={styles.buttonReloadMenu} ><Ionicons name="refresh-outline" size={30} color={'white'}></Ionicons></Text>
           </Pressable>
         </View>
 
@@ -152,13 +154,31 @@ export default function Home() {
         </View>
       <Modal transparent visible={modalVisible}  >
 
-        <View style={styles.ModalFimJogo} blurRadius ={10}>
+        <View style={styles.ModalFimJogo}>
         <Text>{vencedor()}</Text>
-          <Pressable style={styles.buttonReload} onPress={() =>{setModalVisible(false), resetarJogo()}}>
+          <Pressable style={styles.buttonReloadMenu} onPress={() =>{setModalVisible(false), resetarJogo()}}>
             
           <Text style={styles.textbutton} >Nova Partida</Text>
           </Pressable>
 
+
+        </View>
+      </Modal>
+      <Modal  transparent visible={modalReiniciarVisible}  >
+
+        <View style={styles.ModalReiniciarJogo}>
+          <View style={styles.containerModalReiniciar}>
+          <View style={styles.boxTextModal}>
+
+        <Text style={styles.txtReiniciar}>Tem certeza que deseja reiniciar a partida?</Text>
+          </View>
+          <View style={styles.boxReiniciar}>
+            <Pressable style={styles.buttonReload} onPress={()=>{setModalReiniciarVisible(false)}}><Text style={styles.textButtonReiniciar}>Não</Text></Pressable>
+            <Pressable style={styles.buttonReload} onPress={()=>{resetarJogo()}}><Text style={styles.textButtonReiniciar}>Sim</Text></Pressable>
+            
+          </View>
+
+          </View>
 
         </View>
       </Modal>

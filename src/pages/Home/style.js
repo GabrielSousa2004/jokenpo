@@ -42,6 +42,14 @@ export default StyleSheet.create({
         fontSize:50,
        
     },
+    txtReiniciar:{
+        width: '70%',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize:20,
+        color: 'white'
+       
+    },
 
     txtJogadores:{
         width: '100%',
@@ -137,18 +145,62 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    containerModalReiniciar:{
+        width: '85%',
+        backgroundColor: '#ff8c00',
+        height: '35%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        borderColor: '#eca753',
+        borderWidth: 7
+        
+    },
+    ModalReiniciarJogo:{
+        flex: 1,
+        height: '50%',
+        width: '100%',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    boxReiniciar:{
+        flex: 2,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        gap: 50
+    },
+boxTextModal:{
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
+},
 
     textModal:{
+        textAlign: 'center',
         fontSize: 25,
         color: 'white'
+    },
+    textButtonReiniciar:{
+        fontWeight: 'bold',
+        color: '#eca753'
     },
 
     buttonReload:{
         justifyContent:'center',
-        borderColor:'gray',
-        backgroundColor: '#f3aa47',
-        
-        
+        backgroundColor: 'white',
+        width: '50%',
+        alignItems: 'center',
+        padding: 10,
+        alignSelf: 'center',
+        borderRadius: 10
+    },
+    buttonReloadMenu:{
+        justifyContent:'center',
+        backgroundColor: '#eca753',
+        alignItems: 'center',
         padding: 10,
         alignSelf: 'center',
         borderRadius: 20
